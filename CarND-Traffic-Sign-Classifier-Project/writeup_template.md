@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/before.png "Visualization"
 [image2]: ./examples/bw.png "Grayscaling"
-[image3]: ./examples/augmented.jpg "Augmented Image"
+[image3]: ./examples/augmented.png "Augmented Image"
 [image4]: ./mytest/9.jpg "Traffic Sign 1"
 [image5]: ./mytest/1.jpg "Traffic Sign 2"
 [image6]: ./mytest/6.jpg "Traffic Sign 3"
