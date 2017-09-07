@@ -146,7 +146,7 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
+![alt text](image4 =200x200) ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
 The first image (Speed Limit 120) might be difficult to classify because the sign is tilted towards the left and hence the '1' is not clearly visible. The model predicts this image as either 'Speed Limit 20/80', which are very close in features.
