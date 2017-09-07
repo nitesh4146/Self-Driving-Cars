@@ -27,8 +27,7 @@ The goals / steps of this project are the following:
 [image13]: ./examples/graph_priority.png "Graph4"
 [image14]: ./examples/graph_roundabout.png "Graph5"
 [image15]: ./examples/featuremap.png "Feature Map"
-[image16]: ./examples/
-[image17]: ./examples/
+[image16]: ./examples/color.png "Color Image"
 
 
 ## Rubric Points
@@ -68,7 +67,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][image2]
+![alt text][image16] ![alt text][image2]
 
 2. Normalization: This is necessary to scale down all the images into a small range of comparable numbers. In this case simple mean normalization technique was used.
 
