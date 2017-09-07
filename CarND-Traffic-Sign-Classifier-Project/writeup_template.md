@@ -15,20 +15,19 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/before.png "Visualization"
 [image2]: ./examples/bw.png "Grayscaling"
-[image3]: ./examples/augmented.jpg "Augmented Image"
-[image4]: ./mytest/9.png "Traffic Sign 1"
-[image5]: ./mytest/1.png "Traffic Sign 2"
-[image6]: ./mytest/6.png "Traffic Sign 3"
-[image7]: ./mytest/11.png "Traffic Sign 4"
-[image9]: ./mytest/10.png "Traffic Sign 5"
+[image3]: ./examples/augmented.png "Augmented Image"
+[image4]: ./mytest/9.jpg "Traffic Sign 1"
+[image5]: ./mytest/1.jpg "Traffic Sign 2"
+[image6]: ./mytest/6.jpg "Traffic Sign 3"
+[image7]: ./mytest/11.jpg "Traffic Sign 4"
+[image8]: ./mytest/10.jpg "Traffic Sign 5"
 [image10]: ./examples/graph_speed_120.png "Graph1"
 [image11]: ./examples/graph_road_work.png "Graph2"
 [image12]: ./examples/graph_yield.png "Graph3"
 [image13]: ./examples/graph_priority.png "Graph4"
 [image14]: ./examples/graph_roundabout.png "Graph5"
-[image15]: ./examples/
-[image16]: ./examples/
-[image17]: ./examples/
+[image15]: ./examples/featuremap.png "Feature Map"
+[image16]: ./examples/color.png "Color Image"
 
 
 ## Rubric Points
@@ -45,18 +44,17 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 
 ####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+Summary statistics of the traffic signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is 34799
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is 32x32x3
+* The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing how the data is distributed among the different 43 classes of traffic signs.
 
 ![alt text][image1]
 
@@ -68,7 +66,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][image2]
+![alt text][image16] ![alt text][image2]
 
 2. Normalization: This is necessary to scale down all the images into a small range of comparable numbers. In this case simple mean normalization technique was used.
 
@@ -146,7 +144,7 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
+![alt text](image4) ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
 The first image (Speed Limit 120) might be difficult to classify because the sign is tilted towards the left and hence the '1' is not clearly visible. The model predicts this image as either 'Speed Limit 20/80', which are very close in features.
@@ -169,22 +167,30 @@ Here are the results of the prediction:
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 0.88         			| Speed-limit 120km/h   									| 
+| 1.0     				| Road Work 										|
+| 1.0					| Yield											|
+| 1.0	      			| Priority Road					 				|
+| 1.0				    | Roundabout      							|
 
+![alt text][image4] ![alt text][image10] 
 
-For the second image ... 
+![alt text][image5] ![alt text][image11] 
+
+![alt text][image6] ![alt text][image12] 
+
+![alt text][image7] ![alt text][image13] 
+
+![alt text][image8] ![alt text][image14] 
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
+In the input image below (Speed Limit 50km/h), we can see that the layer has broken the features into different layers. For instance, we can see the circle surrounding the sign in most of the features (complete circle in feature 25). Apart from that, we can also see the number 50 mapped in most of the feature maps. All edges are broken into inner and outer edges. 
 
+![alt text][image15]
