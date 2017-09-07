@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image5]: ./mytest/1.jpg "Traffic Sign 2"
 [image6]: ./mytest/6.jpg "Traffic Sign 3"
 [image7]: ./mytest/11.jpg "Traffic Sign 4"
-[image9]: ./mytest/10.jpg "Traffic Sign 5"
+[image8]: ./mytest/10.jpg "Traffic Sign 5"
 [image10]: ./examples/graph_speed_120.png "Graph1"
 [image11]: ./examples/graph_road_work.png "Graph2"
 [image12]: ./examples/graph_yield.png "Graph3"
