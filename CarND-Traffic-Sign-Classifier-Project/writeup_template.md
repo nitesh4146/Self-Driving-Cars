@@ -146,7 +146,7 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4=250x250] ![alt text][image5] ![alt text][image6] 
+![alt text][image4 =250x250] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
 The first image (Speed Limit 120) might be difficult to classify because the sign is tilted towards the left and hence the '1' is not clearly visible. The model predicts this image as either 'Speed Limit 20/80', which are very close in features.
@@ -179,7 +179,7 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 | 1.0	      			| Priority Road					 				|
 | 1.0				    | Roundabout      							|
 
-![alt text][image4=20x20] ![alt text][image10] 
+![alt text][image4] ![alt text][image10] 
 ![alt text][image5] ![alt text][image11] 
 ![alt text][image6] ![alt text][image12] 
 ![alt text][image7] ![alt text][image13] 
