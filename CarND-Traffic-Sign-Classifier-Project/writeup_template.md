@@ -193,4 +193,6 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
+In the input image below (Speed Limit 50km/h), we can see that the layer has broken the features into different layers. For instance, we can see the circle surrounding the sign in most of the features (complete circle in feature 25). Apart from that, we can also see the number 50 mapped in most of the feature maps. All edges are broken into inner and outer edges. 
+
 ![alt text][image15]
