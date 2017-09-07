@@ -1,11 +1,5 @@
 #**Traffic Sign Recognition** 
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Build a Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
@@ -61,23 +55,25 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+1. Color Space to Grayscale: The images were first converted to grayscale because the traffic sign doesn't have any color dependecy for classification. Also training overhead is reduced in case of grayscale images.
 
 Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because ...
+2. Normalization: This is necessary to scale down all the images into a small range of comparable numbers. In this case simple mean normalization technique was used.
 
-I decided to generate additional data because ... 
+3. Augmentation: The provided training data had lots of images for some classes while very less for others. This affects the accuracy because the model has seen very few images of some classes. 
 
-To add more data to the the data set, I used the following techniques because ... 
+To tackle this problem I implemented various image transforms like Scaling, perspective transform, rotation, Affine transform and histogram equalization. All of these transformations are applied to the classes in which number of images are less than the mean of entire distribution. 
+
+The goal was to repeatedly apply the above transforms untill the number of images for that particular class reaches just above mean value. The distribution of images across different classes before and after augmentation is shown below.
+
+[image]
 
 Here is an example of an original image and an augmented image:
 
 ![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -86,41 +82,54 @@ My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 Grayscale image   							| 
+| Convolution 4x4     	| 1x1 stride, valid padding, outputs 28x28x32 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x32 				|
+| Convolution 4x4     	| 1x1 stride, valid padding, outputs 10x10x128 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x128 				|
+| Fully connected		| outputs 3200x1024        									|
+| RELU					|												|
+| Fully connected		| outputs 1024x2048        									|
+| RELU					|												|
+| Dropout					|	keep_prob:0.5											|
+| Fully connected		| outputs 2048x43        									|
+| Softmax				|         									|
  
 
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+Epochs: 30
+Starting from 10 Epochs, I increased this number to 30 in order to reach the optimum solution.
+
+Learning Rate: 0.0008
+Starting from LR of 0.001, I encountered some oscillation of accuracy between 92 and 95. To fix this issue, I slightly decreased the learning rate.
+
+Optimizer: Adam Optimizer (From LeNet Lab)
+Batch Size: 100
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 99.6%
+* validation set accuracy of 96.9%
+* test set accuracy of 94.5%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+  I started with the LeNet architecture, but the test accuracy was below 90%. I focused on keeping the architecture small and avoid unneccesary layers. 
+  
 * What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+  The width of the conv layer was small and couldn't fit or represented the large data efficiently. 
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+* Which parameters were tuned? How were they adjusted and why?
+  As discussed above, Epochs and Learning rate were modified. 
+  
+* How might a dropout layer help with creating a successful model?
+  For once, the validation accuracy was very high, but at the same time, the test accuarcy was low. This was due to overfitting the train data and was resolved by adding a dropout layer.
+
 
 ###Test a Model on New Images
 
@@ -131,22 +140,23 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+The first image (Speed Limit 120) might be difficult to classify because the sign is tilted towards the left and hence the '1' is not clearly visible. The model predicts this image as either 'Speed Limit 20/80', which are very close in features.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+
+Out of 10 new traffic signs, the model was able to predict 9 correctly which means an accuracy of 90%. This was pretty good when compared to the test accuracy which was based on 1000's of images. I purposely choose the wrongly predicted image to check model behavior to such images. It turns out that model was very close to predicting the correct output as discussed in the last question. 
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
+| Speed-limit 120km/h     			| Speed-limit 20km/h 										|
 | Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
 | Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Priority Road	      		| Priority Road					 				|
+| Roundabout			| Roundabout      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
