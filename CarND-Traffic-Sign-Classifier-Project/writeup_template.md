@@ -26,7 +26,7 @@ The goals / steps of this project are the following:
 [image12]: ./examples/graph_yield.png "Graph3"
 [image13]: ./examples/graph_priority.png "Graph4"
 [image14]: ./examples/graph_roundabout.png "Graph5"
-[image15]: ./examples/
+[image15]: ./examples/featuremap.png "Feature Map"
 [image16]: ./examples/
 [image17]: ./examples/
 
@@ -146,7 +146,7 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text](image4 =200x200) ![alt text][image5] ![alt text][image6] 
+![alt text](image4) ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
 The first image (Speed Limit 120) might be difficult to classify because the sign is tilted towards the left and hence the '1' is not clearly visible. The model predicts this image as either 'Speed Limit 20/80', which are very close in features.
@@ -193,4 +193,4 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
-
+![alt text][image15]
