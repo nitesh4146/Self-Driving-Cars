@@ -13,14 +13,23 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1]: ./examples/before.png "Visualization"
+[image2]: ./examples/bw.png "Grayscaling"
+[image3]: ./examples/augmented.jpg "Augmented Image"
+[image4]: ./mytest/9.png "Traffic Sign 1"
+[image5]: ./mytest/1.png "Traffic Sign 2"
+[image6]: ./mytest/6.png "Traffic Sign 3"
+[image7]: ./mytest/11.png "Traffic Sign 4"
+[image9]: ./mytest/10.png "Traffic Sign 5"
+[image10]: ./examples/graph_speed_120.png "Graph1"
+[image11]: ./examples/graph_road_work.png "Graph2"
+[image12]: ./examples/graph_yield.png "Graph3"
+[image13]: ./examples/graph_priority.png "Graph4"
+[image14]: ./examples/graph_roundabout.png "Graph5"
+[image15]: ./examples/
+[image16]: ./examples/
+[image17]: ./examples/
+
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -151,7 +160,7 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Speed-limit 120km/h     			| Speed-limit 20km/h 										|
-| Stop Sign      		| Stop sign   									| 
+| Road Work      		| Road Work   									| 
 | Yield					| Yield											|
 | Priority Road	      		| Priority Road					 				|
 | Roundabout			| Roundabout      							|
