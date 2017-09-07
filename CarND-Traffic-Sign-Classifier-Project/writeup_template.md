@@ -179,7 +179,7 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 | 1.0	      			| Priority Road					 				|
 | 1.0				    | Roundabout      							|
 
-![alt text][image4] ![alt text][image10] 
+![alt text][image4=20x20] ![alt text][image10] 
 ![alt text][image5] ![alt text][image11] 
 ![alt text][image6] ![alt text][image12] 
 ![alt text][image7] ![alt text][image13] 
