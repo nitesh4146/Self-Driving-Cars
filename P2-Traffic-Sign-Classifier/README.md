@@ -70,11 +70,9 @@ To tackle this problem I implemented various image transforms like Scaling, pers
 
 The goal was to repeatedly apply the above transforms untill the number of images for that particular class reaches just above mean value. The distribution of images across different classes before and after augmentation is shown below.
 
-[image]
-
 Here is an example of an original image and an augmented image:
 
-![alt text][image3]
+![alt text][image2] ![alt text][image3]
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
