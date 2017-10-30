@@ -94,7 +94,7 @@ The source points when drawn on the original image, the src lines are almost par
 ![alt text][image4]
 
 After applying perspective transform to our selected image, the src lines become parallel to each other as they are supposed to be when viewed from top.
-![alt text][image4]
+![alt text][image41]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
