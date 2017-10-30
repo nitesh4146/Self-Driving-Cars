@@ -40,6 +40,7 @@ def calibrate():
 mtx, dist = calibrate()
 print(">> Camera Calibrated")
 
+
 def get_warped(img):
     global mtx, dist, combined_sobel, img_hls_white_yellow_bin, b_ch_out, sxbinary
     img = cv2.undistort(img, mtx, dist, None, mtx)
@@ -274,9 +275,11 @@ def looper(binary_warped, left_fit, right_fit, undist, Minv):
     pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
     pts = np.hstack((pts_left, pts_right))
 
+    # print(pts_right)
     # Calculating offset of car from center
-    x1 = pts_left[0,650,0]
-    x2 = pts_right[0,650,0]
+    indx = binary_warped.shape[0]
+    x1 = pts_left[0,indx-50,0]
+    x2 = pts_right[0,50,0]
     xc = x1 + (x2 - x1)/2
     center_offset = (binary_warped.shape[1])/2 - xc
     if center_offset < 0:
@@ -297,7 +300,7 @@ def looper(binary_warped, left_fit, right_fit, undist, Minv):
 
     # Curvature
     ym_per_pix = 30/720 # meters per pixel in y dimension
-    xm_per_pix = 3.7/700 # meters per pixel in x dimension
+    xm_per_pix = 3.7/800 # meters per pixel in x dimension
     y_eval = np.max(ploty)
     # print(ym_per_pix, xm_per_pix)
 
@@ -311,7 +314,7 @@ def looper(binary_warped, left_fit, right_fit, undist, Minv):
     center_curverad = (left_curverad + right_curverad)/2
     # Now our radius of curvature is in meters
     # print("Radius of Curvature = ", center_curverad)
-    # print(left_curverad, 'm', right_curverad, 'm')
+    print(left_curverad, 'm', right_curverad, 'm')
 
     cv2.putText(result,'Radius of Curvature: {0:.2f} m'.format(center_curverad),(10,300),2,1.0,[255,255,255],2,cv2.LINE_AA)
     cv2.putText(result,'Vehicle is {0:.2f}m {1} of center'.format(center_offset*xm_per_pix, offset_str),(10,350),4,1.0,[255,255,255],2,cv2.LINE_AA)
@@ -337,16 +340,7 @@ def looper(binary_warped, left_fit, right_fit, undist, Minv):
     a1[50:a3.shape[0]+50,2*a4.shape[1]:3*a4.shape[1],:] = a4
     a1[50:a5.shape[0]+50,3*a5.shape[1]:4*a5.shape[1],:] = a5
 
-    # final = np.hstack([a1, np.vstack([a5,a2,a3,a4])])
-
-    # print(result.shape)
     cv2.imshow("Out", a1)
-    # cv2.imshow("Lane", color_warp)
-    # plt.plot(left_fitx, ploty, color='yellow')
-    # plt.plot(right_fitx, ploty, color='yellow')
-    # plt.xlim(0, 1280)
-    # plt.ylim(720, 0)
-    # plt.show()
     return a1, left_curverad, right_curverad, left_fit, right_fit
 
 
