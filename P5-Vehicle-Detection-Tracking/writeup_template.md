@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 [yuv]: ./output_images/yuv.png
 [hog]: ./output_images/hog_features.png
 [windows]: ./output_images/windows.jpg
-[pipeline]: ./examples/pipeline.png
+[pipeline]: ./output_images/pipeline.png
 [image6]: ./output_images/car_noncar.png
 [image7]: ./output_images/car_noncar.png
 [video1]: ./output.mp4
