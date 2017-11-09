@@ -22,6 +22,7 @@ The goals / steps of this project are the following:
 [pipeline]: ./output_images/pipeline.png
 [test_images]: ./output_images/test_images.png
 [histogram]: ./output_images/histogram.png
+[video_image]: ./output_images/video_image.png
 [video1]: ./output.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -95,13 +96,15 @@ Here's a [link to my video result](./output.mp4)
 
 The function `find_cars` return a list of all bounding boxes where a car was found. However, this list contains many false positives. To tackle this, I first combined all overlapping boxes by adding on top of each other to generate a heatmap of detections. This is implemented in function `add_heat`. Stronger the value of heat at point, more are the chances that multiple windows overlapped to give a positive detection at this point. Thus I thresholded this heatmap in `apply_threshold` function to only keep strong detections. `label` function returns all the bounding boxes from the thresholded heatmap. These boxes are then plotted using `draw_labeled_bboxes` function.
 
+Following image was taken from a processed Video. Noisy Heatmap is shown in the top-left corner and Filtered Heatmap is shown in the top-right corner: 
+
+![alt text][video_image]
+
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 ### Here are six frames and their corresponding Noisy detections, heatmaps and label or filtered output:
 
 ![alt text][pipeline]
-
-
 
 ---
 
