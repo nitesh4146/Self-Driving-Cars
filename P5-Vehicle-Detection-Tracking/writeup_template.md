@@ -21,6 +21,7 @@ The goals / steps of this project are the following:
 [windows]: ./output_images/windows.jpg
 [pipeline]: ./output_images/pipeline.png
 [test_images]: ./output_images/test_images.png
+[histogram]: ./output_images/histogram.png
 [video1]: ./output.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -52,6 +53,10 @@ I used `YUV` color space which looks like this:
 Here is an example using the `YUV` color space and HOG parameters of `orientations=11`, `pixels_per_cell=(16, 16)` and `cells_per_block=(2, 2)`:
 
 ![alt text][hog]
+
+Figure below shows Histogram Feature of `bbox-example-image`
+
+![alt text][histogram]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
