@@ -20,8 +20,7 @@ The goals / steps of this project are the following:
 [hog]: ./output_images/hog_features.png
 [windows]: ./output_images/windows.jpg
 [pipeline]: ./output_images/pipeline.png
-[image6]: ./output_images/car_noncar.png
-[image7]: ./output_images/car_noncar.png
+[test_images]: ./output_images/test_images.png
 [video1]: ./output.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -78,7 +77,7 @@ Sliding the window over the entire image is time_consuming and redundant. Since 
 
 Here are some example images:
 
-![alt text][image4]
+![alt text][test_images]
 ---
 
 ### Video Implementation
