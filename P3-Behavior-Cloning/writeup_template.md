@@ -102,13 +102,10 @@ Here is a visualization of the architecture:
 | RELU					|		
 | Convolution 3x3     	| 64 layers, 1x1 stride, valid padding, 	|
 | RELU					|			
-| Fully connected		| outputs 3200x1024        									|
-| RELU					|												|
-| Fully connected		| outputs 1024x2048        									|
-| RELU					|												|
-| Dropout					|	keep_prob:0.5											|
-| Fully connected		| outputs 2048x43        									|
-| Softmax				|         									|
+| Dense		| 100 layers        								|
+| Dense		| 50 layers        									|
+| Dense		| 10 layers        									|
+| Dense		| 1 layers        									 |
  
 
 ####3. Creation of the Training Set & Training Process
@@ -123,18 +120,12 @@ I then recorded the vehicle recovering from the left side and right sides of the
 ![alt text][image4]
 ![alt text][image5]
 
-Then I repeated this process on track two in order to get more data points.
+Visualizing the data revealed the fact that the data set contained a high number of images where steering was zero or close to zero. While the high steering data was very less as can be seen in the histogram below:
+![alt text][old_hist]
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+I probablistically modified the data such that the number of images in each bin was close to the mean of entire data set. For instance, if the number of images above mean were 70%, I randomly picked only 30% of the images from that bin. After this probablistic inclusion, my dataset has the distribution as this: 
+![alt text][new_hist]
 
-![alt text][image6]
-![alt text][image7]
+This new data was then preprocessed by normalization, cropping and finally shuffling. The entire dataset was then split into 80% train data and 20% validation data. 
 
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 5 as the loss increased beyond this. I used an adam optimizer so that manually training the learning rate wasn't necessary.
