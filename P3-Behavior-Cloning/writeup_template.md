@@ -109,20 +109,22 @@ Here is a visualization of the architecture:
 
 ####3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behavior, I first recorded three laps on track one using center lane driving. Here is an example image of center lane driving:
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to recover from situations were it steers to edge of the road. These images show what a recovery looks like :
 
 ![alt text][image3]
 ![alt text][image4]
 ![alt text][image5]
 
 Visualizing the data revealed the fact that the data set contained a high number of images where steering was zero or close to zero. While the high steering data was very less as can be seen in the histogram below:
+
 ![alt text][old_hist]
 
 I probablistically modified the data such that the number of images in each bin was close to the mean of entire data set. For instance, if the number of images above mean were 70%, I randomly picked only 30% of the images from that bin. After this probablistic inclusion, my dataset has the distribution as this: 
+
 ![alt text][new_hist]
 
 This new data was then preprocessed by normalization, cropping and finally shuffling. The entire dataset was then split into 80% train data and 20% validation data. 
