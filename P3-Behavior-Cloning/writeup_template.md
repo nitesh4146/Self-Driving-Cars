@@ -53,11 +53,11 @@ The model.ipynb file contains the code for training and saving the convolution n
 
 ####1. An appropriate model architecture has been employed
 
-The model I used was a slightly modified version of Nvidia model mentioned in class. The data was normalized, cropped before feeding to the network. The model consists of various convolution, pooling and fully-connected layers. For loss, mean-squared error is used along with Adam optimizer. The detailed layered model is shown later here.
+The model I used was a slightly modified version of Nvidia model mentioned in class. The data was normalized, cropped before feeding to the network. The model consists of various convolution, dropout, pooling and fully-connected layers. For loss, mean-squared error is used along with Adam optimizer. The detailed layered model is shown later here.
 
 ####2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting. However, my model performs better without the dropout layers.
+The model contains one dropout layers in order to reduce overfitting.
 
 I recorded the data several times, and tested it using the same model architecture. The model performed well in all recordings and the vehicle stayed on track in the simulator.
 
@@ -77,11 +77,8 @@ For details about how I created the training data, see the next section.
 
 I started with a very simple model architecture with only one conv layer. However, the accuracy was not to the point and it suffered in simulator as the vehcile was moving offroad at the very initial phase. Later, I modified the network to alexnet-like model, which also suffered and performance in simulator was poor. Finally when I used the Nvidia model architecture, the model performed really well and car was able to drive the complete lap with getting off the road. 
 
-The final model consists of 5 convolution and 4 fully-connected layers. A stride of 5x5 is used for convolution along with a subsampling at 2x2. The activation is 'relu' throughout the network.
-
 ####2. Final Model Architecture
-
-The final model architecture consists of 5 convolution and 4 fully-connected layers. A stride of 5x5 is used for convolution along with a subsampling at 2x2. The activation is 'relu' throughout the network.
+The final model architecture consists of 5 convolution and 4 fully-connected layers. A stride of 5x5 is used for convolution along with a subsampling at 2x2. The activation is 'relu' throughout the network. One dropout layer is used just after the last conv layer in order to avoid overfitting.
 
 Here is a visualization of the architecture: 
 
@@ -91,7 +88,6 @@ Here is a visualization of the architecture:
 | Lambda Normalization     	| |
 | Cropping2D     	| start: (70,25), end: end	|
 | Convolution 5x5     	| 24 layers, 1x1 stride, valid padding, 2x2 subsample 	|
-| Convolution 5x5     	| 24 layers, 1x1 stride, valid padding, 2x2 subsample 	|
 | RELU					|												|
 | Convolution 5x5     	| 36 layers, 1x1 stride, valid padding, 2x2 subsample 	|
 | RELU					|		
@@ -100,7 +96,8 @@ Here is a visualization of the architecture:
 | Convolution 3x3     	| 64 layers, 1x1 stride, valid padding, 	|
 | RELU					|		
 | Convolution 3x3     	| 64 layers, 1x1 stride, valid padding, 	|
-| RELU					|			
+| RELU					|		
+| Dropout     	| 0.5 keep_prob  	|
 | Dense		| 100 layers        								|
 | Dense		| 50 layers        									|
 | Dense		| 10 layers        									|
@@ -126,6 +123,8 @@ Visualizing the data revealed the fact that the data set contained a high number
 I probablistically modified the data such that the number of images in each bin was close to the mean of entire data set. For instance, if the number of images above mean were 70%, I randomly picked only 30% of the images from that bin. After this probablistic inclusion, my dataset has the distribution as this: 
 
 ![alt text][new_hist]
+
+Data augmentation step just involved flipping the entire dataset about the vertical axis along with the measurement inversion. This increased the trainng points by double and helped to further generalise the model.
 
 This new data was then preprocessed by normalization, cropping and finally shuffling. The entire dataset was then split into 80% train data and 20% validation data. 
 
