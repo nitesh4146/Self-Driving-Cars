@@ -102,23 +102,6 @@ Here is a visualization of the architecture:
 | Dense		| 50 layers        									|
 | Dense		| 10 layers        									|
 | Dense		| 1 layers        									 |
-
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Convolution 5x5     	| 16 layers, 1x1 stride, valid padding, 2x2 subsample 	|
-| RELU					|												|
-| Convolution 5x5     	| 36 layers, 1x1 stride, valid padding, 2x2 subsample 	|
-| RELU					|		
-| Convolution 5x5     	| 64 layers, 1x1 stride, valid padding, 2x2 subsample 	|
-| RELU					|		
-| Convolution 3x3     	| 128 layers, 1x1 stride, valid padding, 	|
-| RELU					|		
-| Dropout     	| 0.5 keep_prob  	|
-| Dense		| 100 layers        								|
-| Dense		| 64 layers        									|
-| Dense		| 10 layers        									|
-| Dense		| 12 layers        									|
-| Dense		| Softmax        									|
  
 
 ####3. Creation of the Training Set & Training Process
